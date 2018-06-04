@@ -18,7 +18,7 @@ public class BeforeAspect {
     //           |         | |
     // any returntype  class method
     //process of weaving AOP around methods is called Weaver and framework is weaving
-    @Before("execution(* com.example.spring.aop.demo.bussiness.*.*(..))")//pointcut
+    @Before("com.example.spring.aop.demo.aspect.CommonJoinPointConfig.datalayerExecution()")//pointcut
     public void before(JoinPoint joinPoint){//specific interception of a method call
         //advice
         logger.info("Intercepted method calls {}",joinPoint);

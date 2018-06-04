@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 public class AfterAspect {
     private Logger logger=LoggerFactory.getLogger(AfterAspect.class);
 
-    @After(value = "execution(* com.example.spring.aop.demo.bussiness.*.*(..))")//pointcut
+    @After(value = "com.example.spring.aop.demo.aspect.CommonJoinPointConfig.datalayerExecution()")//pointcut
     public void afterThrowing(JoinPoint joinPoint){//specific interception of a method call
         //advice
             logger.info("after execution of {}",joinPoint);
@@ -22,7 +22,7 @@ public class AfterAspect {
     // any returntype  class method
     //process of weaving AOP around methods is called Weaver and framework is weaving
     @AfterReturning(
-            value = "execution(* com.example.spring.aop.demo.bussiness.*.*(..))",
+            value = "com.example.spring.aop.demo.aspect.CommonJoinPointConfig.datalayerExecution()",
             returning = "result"
         )//pointcut
     public void afterReturning(JoinPoint joinPoint,Object result){//specific interception of a method call
@@ -31,7 +31,7 @@ public class AfterAspect {
     }
 
     @AfterThrowing(
-            value = "execution(* com.example.spring.aop.demo.bussiness.*.*(..))",
+            value = "com.example.spring.aop.demo.aspect.CommonJoinPointConfig.datalayerExecution()",
             throwing = "exception"
     )//pointcut
     public void afterThrowing(JoinPoint joinPoint,Exception exception){//specific interception of a method call

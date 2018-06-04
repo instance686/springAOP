@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class MethodExecutionCalculationAspect {
     private Logger logger=LoggerFactory.getLogger(MethodExecutionCalculationAspect.class);
 
-    @Around("execution(* com.example.spring.aop.demo.bussiness.*.*(..))")
+    @Around("com.example.spring.aop.demo.aspect.CommonJoinPointConfig.datalayerExecution()")
     public void around(ProceedingJoinPoint joinPoint) throws Throwable {
         Long startTime=System.currentTimeMillis();
         joinPoint.proceed();
