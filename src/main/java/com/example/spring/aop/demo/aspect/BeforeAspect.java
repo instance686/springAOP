@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 
-@Aspect
+@Aspect//combination of joinpoint and advice
 @Configuration
 public class BeforeAspect {
     private Logger logger=LoggerFactory.getLogger(BeforeAspect.class);
@@ -17,8 +17,10 @@ public class BeforeAspect {
     //execution (* PACKAGE.*.*(..))
     //           |         | |
     // any returntype  class method
-    @Before("execution(* com.example.spring.aop.demo.bussiness.*.*(..))")
-    public void before(JoinPoint joinPoint){
+    //process of weaving AOP around methods is called Weaver and framework is weaving
+    @Before("execution(* com.example.spring.aop.demo.bussiness.*.*(..))")//pointcut
+    public void before(JoinPoint joinPoint){//specific interception of a method call
+        //advice
         logger.info("Intercepted method calls {}",joinPoint);
     }
 
